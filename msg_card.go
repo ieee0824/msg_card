@@ -7,6 +7,10 @@ type MessageBox struct {
 	Message string
 }
 
+func (m MessageBox) String(l int) string {
+	return strings.Join(m.Box(l), "\n")
+}
+
 func (m MessageBox) Box(l int) []string {
 	nl := getWidthSize(m.Name)
 	if l < nl {
