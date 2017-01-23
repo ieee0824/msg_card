@@ -20,14 +20,14 @@ func (m MessageBox) String(l int) string {
 }
 
 func (m MessageBox) Box(l int) []string {
-	nl := getWidthSize(m.Name)
+	nl := getWidthSize(*m.Name)
 	if l < nl {
 		l = nl
 	}
 	if l%2 != 0 {
 		l++
 	}
-	lines := strings.Split(m.Message, "\n")
+	lines := strings.Split(*m.Message, "\n")
 	newLines := []string{}
 
 	for _, line := range lines {
@@ -48,7 +48,7 @@ func (m MessageBox) Box(l int) []string {
 	}
 
 	top := "┌" + nString("─", l) + "┐"
-	name := m.Name + nString(" ", l-nl)
+	name := *m.Name + nString(" ", l-nl)
 	name = wall([]string{name})[0]
 	middle := "├" + nString("─", l) + "┤"
 	newLines = wall(newLines)
