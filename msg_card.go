@@ -6,8 +6,8 @@ import (
 )
 
 type MessageBox struct {
-	Name    string `json:"name"`
-	Message string `json:"message"`
+	Name    *string `json:"name"`
+	Message *string `json:"message"`
 }
 
 func (m MessageBox) Json() string {
