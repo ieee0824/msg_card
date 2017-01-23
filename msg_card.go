@@ -1,10 +1,18 @@
 package card
 
-import "strings"
+import (
+	"encoding/json"
+	"strings"
+)
 
 type MessageBox struct {
-	Name    string
-	Message string
+	Name    string `json:"name"`
+	Message string `json:"message"`
+}
+
+func (m MessageBox) Json() string {
+	bin, _ := json.Marshal(m)
+	return string(bin)
 }
 
 func (m MessageBox) String(l int) string {
