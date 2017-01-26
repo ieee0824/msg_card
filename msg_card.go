@@ -94,7 +94,7 @@ func newLine(s string, l int) []string {
 	}
 	for i, _ := range []rune(s) {
 		w := getWidthSize(string([]rune(s)[:i+1]))
-		if w >= l {
+		if w+1 >= l {
 			ret := []string{string([]rune(s)[:i+1])}
 			return append(ret, newLine(string([]rune(s)[i+1:]), l)...)
 		} else if len([]rune(s))-1 == i {
