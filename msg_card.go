@@ -5,6 +5,10 @@ import (
 	"strings"
 )
 
+func String(s string) *string {
+	return &s
+}
+
 type MessageBox struct {
 	Name    *string `json:"name"`
 	Message *string `json:"message"`
@@ -90,9 +94,11 @@ func newLine(s string, l int) []string {
 	}
 	for i, _ := range []rune(s) {
 		w := getWidthSize(string([]rune(s)[:i+1]))
-		if w == l {
+		if w >= l {
 			ret := []string{string([]rune(s)[:i+1])}
 			return append(ret, newLine(string([]rune(s)[i+1:]), l)...)
+		} else if len([]rune(s))-1 == i {
+			return []string{s}
 		}
 	}
 	return nil
