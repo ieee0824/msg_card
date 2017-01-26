@@ -51,12 +51,12 @@ func (m MessageBox) Box(l int) []string {
 		}
 	}
 
-	top := "┌" + nString("─", l) + "┐"
+	top := "+" + nString("-", l) + "+"
 	name := *m.Name + nString(" ", l-nl)
 	name = wall([]string{name})[0]
-	middle := "├" + nString("─", l) + "┤"
+	middle := "+" + nString("-", l) + "+"
 	newLines = wall(newLines)
-	bottom := "└" + nString("─", l) + "┘"
+	bottom := "+" + nString("-", l) + "+"
 
 	ret := []string{}
 
@@ -71,7 +71,7 @@ func (m MessageBox) Box(l int) []string {
 
 func wall(ss []string) []string {
 	for i, s := range ss {
-		ss[i] = "│" + s + "│"
+		ss[i] = "|" + s + "|"
 	}
 	return ss
 }
